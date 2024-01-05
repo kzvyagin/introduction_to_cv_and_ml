@@ -243,7 +243,109 @@ Mat mat2 = mat;
     img3 = img3 * 0.25; // Уменьшение яркости в 4 разаimwrite("image01_res4.jpg", img3);
  ```
 
-![Ромашки с заменой цвета ](https://raw.githubusercontent.com/kzvyagin/introduction_to_cv_and_ml/main/chapter2/images/chamomile_4.png)
+![Ромашки с увеличением яркости ](https://raw.githubusercontent.com/kzvyagin/introduction_to_cv_and_ml/main/chapter2/images/chamomile_4.png)
 
+![Ромашки с уменьшением яркости ](https://raw.githubusercontent.com/kzvyagin/introduction_to_cv_and_ml/main/chapter2/images/chamomile_5.png)
+
+Если необходимо объединить изображения, то это очень просто. Пример представлен ниже :
+
+```
+ void drawRectAndShowWithSource(cv::Mat imgSrg)
+{
+    cv::Mat img;
+    imgSrg.copyTo(img);
+    cv::Mat mat3(cv::Size(img.cols, img.rows), img.type());
+    mat3.setTo(cv::Scalar(0,0,0));
+    cv::rectangle(mat3,cv::Rect(100,100,100,100),cv::Scalar(0,0,255),3);
+    cv::imshow("RECT1", mat3    );
+    cv::Mat img2;
+    cv::addWeighted( img, 1, mat3, 1, 0.0, img2);
+   // img=mat3+img;
+    cv::imshow("Display window2", img2);
+}
+```
+
+![Квадрат для объединения ](https://raw.githubusercontent.com/kzvyagin/introduction_to_cv_and_ml/main/chapter2/images/chamomile_6.png)
+
+![Ромашки с объединением с квадратом ](https://raw.githubusercontent.com/kzvyagin/introduction_to_cv_and_ml/main/chapter2/images/chamomile_7.png)
+
+
+Это далеко не все операции над матрицами, поэтому далее приведены возможные операции с матрицами.
+
+
+Общий Список операций над матрицами:
+которые могут быть использованы в произвольно сложных выражениях(A, B – матрицы, s – скаляр, alpha – вещественный скаляр) :
+
+    • сложение, вычитание, 	отрицание : A + B, A — B, A + s, A — s, s + A, s — A, 	-A; 	
+    • управление яркостью : 	A*alpha; 	
+    • поэлементное 	умножение / деление: A.mul(B), A / B, alpha / A; 
+    • умножение матриц 	: A*B; 
+    • транспонированная 	матрица : A.t(); 	
+    • обращение матрицы 	и псевдо — инверсии, решения линейных 	систем и наименьших квадратов : 	A.inv([метод]), A.inv([метод])*B; 	
+    • сравнивание : A op B, 	A op alpha, alpha op A, где op это одно из следующих 	: >, >= , == , != , <= , <.Результат сравнения 	в одноканальной 8 — битной матрице; 	
+    • битовые логические 	операции : A op B, A op s, s op A, ~A, где op это одно 	из следующих : &, | , ^; 	
+    • нахождение минимума 	/ максимума: min(A, B), min(A, alpha), max(A, B), max(A, 	alpha); 	
+    • abs(A); 	
+    • векторное и скалярное 	произведение : A.cross(B) A.dot(B); 	
+    • любая функция матрицы или матриц, 	которая возвращает скаляр, например, 	norm, mean, sum, countNonZero, trace, determinant, repeat. 
+
+
+Функция конвертации изображений с различными типами цветовых каналов:
+Наиболее часто востребованная функция cvtColor предназначена для конвертации матриц изображений с различным цветовым пространством.
+Рассмотрим ее подробнее
+
+```
+void cvtColor(        InputArray src,        OutputArray dst,        int code,        int dstCn = 0);
+```
+Параметры:
+
+
+```
+• src – входная матрица; 
+• dst – выходная 	матрица, размер матрицы должен быть 	таким же, как и в src; 	
+• code – код конвертации; 		
+• dstCn – количество 	каналов в конечной матрице, если указано 	0, то количество каналов определяется 	автоматически. 	
+```
+
+Функция cvtColor 	преобразует изображение представленное в виде матрицы  из одного цветового пространства, в другое, тип преобразование задаться параметром code. 
+
+Внимание: Цветовой формат в OpenCV 	по умолчанию не RGB, а BGR! 	
+
+Обычные диапазоны значений цветов  R, G и B в различных цветовых пространствах :
+
+
+    • 0 — 255 для CV_8U 	изображений, 	
+    • 0 — 65535 для CV_16U 	изображений, 	
+    • 0 — 1 для CV_32F изображений. 	
+
+
+В случае линейных преобразований, диапазон не имеет значения. Но в случае нелинейной трансформации, входное RGB изображение должно быть нормализовано для надлежащего диапазона значений, чтобы получить правильные результаты (см. Документацию).
+
+
+Функция поддерживает следующие трансформации :
+
+
+    • RGB в GRAY и обратно – 	CV_BGR2GRAY, CV_RGB2GRAY, CV_GRAY2BGR, CV_GRAY2RGB; 	
+    • RGB в CIE XYZ.Rec 709 (и 	обратно) – CV_BGR2XYZ, CV_RGB2XYZ, CV_XYZ2BGR, CV_XYZ2RGB; 	
+    • RGB в YCrCb JPEG(YCC) (и 	обратно) – CV_BGR2YCrCb, CV_RGB2YCrCb, CV_YCrCb2BGR, 	CV_YCrCb2RGB; 	
+    • RGB в HSV(и обратно) – 	CV_BGR2HSV, CV_RGB2HSV, CV_HSV2BGR, CV_HSV2RGB; 	
+    • RGB в HLS(и обратно) – 	CV_BGR2HLS, CV_RGB2HLS, CV_HLS2BGR, CV_HLS2RGB; 	
+    • RGB в CIE L*a*b* (и обратно) 	– CV_BGR2Lab, CV_RGB2Lab, CV_Lab2BGR, CV_Lab2RGB; 	
+    • RGB в CIE L*u*v* (и обратно) 	– CV_BGR2Luv, CV_RGB2Luv, CV_Luv2BGR, CV_Luv2RGB; 	
+    • Bayer в RGB – CV_BayerBG2BGR, CV_BayerGB2BGR,  CV_BayerRG2BGR, CV_BayerGR2BGR, CV_BayerBG2RGB, CV_BayerGB2RGB, 	CV_BayerRG2RGB, CV_BayerGR2RGB. 	
+
+
+
+
+Пример вызова :
+```
+cvtColor(Image24, Gray, CV_BGR2GRAY);
+
+```
+Здесь показан перевод из RGB 24 — битного изображения в 8 — битное градаций серого.
+
+
+
+<h1>Применение фильтров к изображениям.</h1>
 
 to bo continued ...
