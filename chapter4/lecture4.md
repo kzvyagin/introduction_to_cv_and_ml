@@ -1,0 +1,31 @@
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/introduction_to_cv_and_ml">Computer vision and machine learning</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/kzvyagin">Konstantin Zvyagin</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"> <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+- Построение вектора признаков изображения.  2
+  - Типовые признаки на изображениях. 2
+    - 1.1.1 Особые точки 2
+    - 1.1.2 Границы объекта 3
+    - 1.1.3 Форма объекта 3
+    - 1.1.4 Размеры объекта 3
+    - 1.2 яркостные признаки 3
+    - 1.2.1 Экстремумы 4
+    - 1.2.2 Частотные признаки 4
+    - 1.2.3 Гистограммные признаки 4
+    - 1.2.4 Моменты 4
+  - 1.3 Текстурные признаки 5
+- Классификация.  6
+  - Решающие деревья.  6
+    - обзор
+    - принцип построения деревьев
+    - пример построения решающего дерева
+  - Поиск объектов по признакам Хаара. 11
+    - AdaBoost  17
+    - Признаки Хаара 18
+    - Проблемы и ограничения каскадов Хаара 19
+  - Нейросети. 19
+    - Функции активации 22
+    - Пример обучения, расчет 25
+    - Особенности  обучения 31
+  - К ближайших соседей 37
+- Методы оценки достоверности работы классификации 33
+  - Метрики качества регрессии 33
+  - Метрики качества классификации 34
