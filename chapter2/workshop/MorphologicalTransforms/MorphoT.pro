@@ -1,3 +1,9 @@
+#***************************************
+# Copyright (c) 2024 Konstantin Zvyagin.
+# e-mail: knzvyagin@gmail.com
+# SPDX-License-Identifier: BSD-3-Clause	
+#***************************************
+
 QT += widgets
 
 CONFIG += c++11 console
@@ -6,10 +12,10 @@ CONFIG -= app_bundle
 DEFINES += QT_DEPRECATED_WARNINGS
 
 #Attention ! Change  "INCLUDEPATH" and "LIBS += -L" to you opencv path in you system. 
-INCLUDEPATH += /home/student/cv/cv/include/opencv4/
+INCLUDEPATH += ../cv/cv/include/opencv4/
 #/usr/include/opencv
 
-LIBS+= -L/home/student/cv/cv/lib/
+LIBS+= -L../cv/cv/lib/
 
 LIBS += -lopencv_features2d
 LIBS += -lopencv_videoio

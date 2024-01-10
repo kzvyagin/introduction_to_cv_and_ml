@@ -1,4 +1,4 @@
-#  
+# Simple example 
 
 The project provides an example of  simple recolor selected color in given image.
 

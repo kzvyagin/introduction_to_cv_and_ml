@@ -1,3 +1,9 @@
+#***************************************
+# Copyright (c) 2024 Konstantin Zvyagin.
+# e-mail: knzvyagin@gmail.com
+# SPDX-License-Identifier: BSD-3-Clause	
+#***************************************
+
 QT += widgets
 
 CONFIG += c++11 console

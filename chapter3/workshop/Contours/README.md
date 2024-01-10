@@ -1,6 +1,6 @@
-# Filters example
+# Contours extraction example
 
-The project provides an example of simple OpenCV image filters, like blur and etc.
+The project provides an example of extracting contours from given image thought  OpenCV functions.
 
 The source code of the project is provided under
 [the license](LICENSE.BSD-3-CLAUSE.md),

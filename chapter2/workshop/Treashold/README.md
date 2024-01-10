@@ -1,4 +1,4 @@
-#  
+#  Thresholding example
 
 The project provides an example of different thresholding functions in OpenCV.
 

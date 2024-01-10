@@ -1,4 +1,4 @@
-#  
+# Empty OpenCv template project
 
 The project provides an example of  simple Qt project with OpenCV library. It's load and show image.
 

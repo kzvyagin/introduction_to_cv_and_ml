@@ -1,3 +1,9 @@
+//***************************************
+// Copyright (c) 2024 Konstantin Zvyagin.
+// e-mail: knzvyagin@gmail.com
+// SPDX-License-Identifier: BSD-3-Clause	
+//***************************************
+
 #include <QApplication>
 #include "opencv2/objdetect.hpp"
 #include "opencv2/imgproc/imgproc.hpp"

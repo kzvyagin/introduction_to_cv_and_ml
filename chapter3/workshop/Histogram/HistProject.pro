@@ -13,9 +13,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 #Attention ! Change  "INCLUDEPATH" and "LIBS += -L" to you opencv path in you system. 
 INCLUDEPATH += ../cv/cv/include/opencv4/
-#/usr/include/opencv
+LIBS+= -L/../cv/cv/lib/
 
-LIBS+= -L../cv/cv/lib/
+
 
 LIBS += -lopencv_features2d
 LIBS += -lopencv_videoio

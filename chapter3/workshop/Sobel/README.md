@@ -1,6 +1,6 @@
-# Filters example
+# Sobel edges example
 
-The project provides an example of simple OpenCV image filters, like blur and etc.
+The project provides an example of getting edges thought Sobel algorithm provided by OpenCV.
 
 The source code of the project is provided under
 [the license](LICENSE.BSD-3-CLAUSE.md),
