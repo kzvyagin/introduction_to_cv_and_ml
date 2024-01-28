@@ -11,12 +11,12 @@ CONFIG -= app_bundle
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-#Attention ! Change  "INCLUDEPATH" and "LIBS += -L" to you opencv path in you system. 
-INCLUDEPATH += ../cv/cv/include/opencv4/
-#/usr/include/opencv
+#Attention ! Change  "INCLUDEPATH" and "LIBS += -L" to you opencv path in you system.
+#Here is the path's for default OpenCv path for Ubutu 22.04 (joshua build) on OrangePi5 board
+INCLUDEPATH += /usr/include/opencv4
+LIBS+= -L/usr/lib/aarch64-linux-gnu
 
-LIBS+= -L../cv/cv/lib/
-
+# here it is a heap of all opencv librarys including
 LIBS += -lopencv_features2d
 LIBS += -lopencv_videoio
 LIBS += -lopencv_video
@@ -24,7 +24,6 @@ LIBS += -lopencv_imgproc
 LIBS += -lopencv_photo
 LIBS += -lopencv_objdetect
 LIBS += -lopencv_ml
-LIBS += -lopencv_gapi
 LIBS += -lopencv_imgcodecs
 LIBS += -lopencv_core
 LIBS += -lopencv_highgui

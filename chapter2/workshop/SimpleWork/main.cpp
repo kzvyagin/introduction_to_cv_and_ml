@@ -49,8 +49,10 @@ void recolorColor(cv::Mat &img)
 void drawRectAndShowWithSource(cv::Mat imgSrg)
 {
     cv::Mat img;
-    imgSrg.copyTo(img);
-    cv::Mat mat3(cv::Size(img.cols, img.rows), img.type());
+    imgSrg.copyTo(img); // deep copy
+    qDebug()<<"pringing cols, rows, type: "<<img.cols << img.rows << img.type();
+
+    cv::Mat mat3 ( cv::Size(img.cols, img.rows), img.type() );
     mat3.setTo(cv::Scalar(0,0,0));
     cv::rectangle(mat3,cv::Rect(100,100,100,100),cv::Scalar(0,0,255),3);
 
@@ -64,6 +66,16 @@ void drawRectAndShowWithSource(cv::Mat imgSrg)
 
 
 
+void resizeImage(cv::Mat source)
+{
+    cv::Mat dst;
+    // You can try more different parameters
+    cv::resize(source, dst, cv::Size(300, 300), 0, 0, cv::INTER_AREA);
+    cv::imshow("canvasOutput",dst );
+    cv::imshow("canvasInput",source );
+    while(cv::waitKey(1) != 27); // 27 = ascii value of ESC
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -71,26 +83,33 @@ int main(int argc, char *argv[])
 
 
 
-    QString imgPath="../SimpleWork/5.jpg";
+    QString imgPath="5.jpg";
     cv::Mat img = cv::imread( imgPath.toStdString() );
 
-    qDebug()<<"C:"<<img.channels();
-    qDebug()<<"T:"<<img.type();
+    qDebug()<<"Channels:"<<img.channels()<<" Type:"<<img.type();
 
     cv::Mat img2;
     img.copyTo(img2);
 
-    /*{
+/* uncommetn section to test recolor color function
+      {
         recolorColor(img);
         cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
         cv::imshow("Display window", img);
-    }*/
+    }
+*/
 
     {
         drawGrid(img2);
         cv::namedWindow("Display window2", cv::WINDOW_AUTOSIZE);
         cv::imshow("Display window2", img2);
     }
+
+/* uncomment section to test resizing image
+    {
+        resizeImage(img);
+    }
+*/
 
     drawRectAndShowWithSource(img);
 
